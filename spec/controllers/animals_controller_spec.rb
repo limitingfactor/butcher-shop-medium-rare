@@ -35,7 +35,7 @@ describe AnimalsController do
       before(:each) { get :show, :id => animal.id, :format => :json }
 
       its(:body)    { should_not be_empty }
-      its(:status)  { should be 200}
+      its(:status)  { should be 200 }
 
       context "with an unknown animal" do
         before(:each) { get :show, :id => 9999, :format => :json }

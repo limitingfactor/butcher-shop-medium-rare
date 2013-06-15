@@ -12,15 +12,20 @@ class AnimalsController < ApplicationController
   end
 
   def show
+    @animal = Animal.find(params[:id])
     respond_with @animal
+  rescue ActiveRecord::RecordNotFound
+    head 404
   end
 
   def update
+    @animal = Animal.find(params[:id])
     @animal.update_attributes animal_params
     respond_with @animal
   end
 
-  def delete
+  def destroy
+    @animal = Animal.find(params[:id])
     @animal.destroy
     head 204
   end
