@@ -13,4 +13,5 @@ group :test, :development do
   gem 'nyan-cat-formatter'
   gem 'shoulda-matchers'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
 end

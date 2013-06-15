@@ -35,6 +35,11 @@ GEM
     database_cleaner (1.0.1)
     diff-lcs (1.2.4)
     erubis (2.7.0)
+    factory_girl (3.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (3.5.0)
+      factory_girl (~> 3.5.0)
+      railties (>= 3.0.0)
     fuubar (1.1.1)
       rspec (~> 2.0)
       rspec-instafail (~> 0.2.0)
@@ -122,6 +127,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.8.1)
   database_cleaner
+  factory_girl_rails
   fuubar
   nyan-cat-formatter
   rails (~> 3.2.13)
