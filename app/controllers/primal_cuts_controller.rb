@@ -4,21 +4,21 @@ class PrimalCutsController < ApplicationController
   before_filter :find_animal,     :only   => [:index, :create]
   before_filter :find_primal_cut, :except => [:index, :create]
 
-  def list
+  def index
     @primal_cuts = @animal.primal_cuts.all
     respond_with @primal_cuts
   end
 
   def create
-    @primal_cut = @anmial.primal_cuts.create(primal_cut_params)
+    @primal_cut = @animal.primal_cuts.create(primal_cut_params)
     respond_with @primal_cut
   end
 
   def show
-    respond_with primal_cut
+    respond_with @primal_cut
   end
 
-  def edit
+  def update
     @primal_cut.update_attributes primal_cut_params
     respond_with @primal_cut
   end
@@ -38,7 +38,7 @@ class PrimalCutsController < ApplicationController
     def find_primal_cut
       @primal_cut = PrimalCut.find params[:id]
     rescue ActiveRecord::RecordNotFound
-      head 944
+      head 404
     end
 
     def primal_cut_params
