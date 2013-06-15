@@ -10,4 +10,6 @@ ButcherShop::Application.routes.draw do
   end
 
   resources :cuts, :only => [:show, :update, :destroy]
+
+  resources :users, :except => [:new, :edit]
 end
