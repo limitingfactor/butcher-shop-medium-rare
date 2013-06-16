@@ -74,7 +74,6 @@ describe PrimalCutsController do
     describe "PUT 'update'" do
       context "with correct params" do
         before(:each) do
-          mock_primal_cut = mock("PrimalCut")
           PrimalCut.should_receive(:find).with(primal_cut.to_param).and_return(primal_cut)
           primal_cut.should_receive(:update_attributes).with({"name" => "Something new"}).and_return(true)
           put :update, id: primal_cut.to_param, primal_cut: { name: "Something new" }, format: :json
@@ -86,7 +85,6 @@ describe PrimalCutsController do
 
       context "with bad params" do
         before(:each) do
-          mock_primal_cut = mock("PrimalCut")
           PrimalCut.should_receive(:find).with(primal_cut.to_param).and_return(primal_cut)
           primal_cut.should_receive(:update_attributes).with({"name" => "nil"}).and_return(false)
           primal_cut.should_receive(:errors).twice.and_return({"something" => "is wrong"})
@@ -100,7 +98,6 @@ describe PrimalCutsController do
 
     describe "DELETE 'destroy'" do
       before(:each) do
-        mock_primal_cut = mock("PrimalCut")
         PrimalCut.should_receive(:find).with(primal_cut.to_param).and_return(primal_cut)
         primal_cut.should_receive(:destroy)
         delete :destroy, id: primal_cut.to_param, format: :json
