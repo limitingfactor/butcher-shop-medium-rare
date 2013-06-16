@@ -28,13 +28,14 @@ class UsersController < ApplicationController
   end
 
   protected
-    def find_user
-      @user = User.find params[:id]
-    rescue ActiveRecord::RecordNotFound
-      head 404
-    end
 
-    def user_params
-      params.require(:user).permit(:first_name, :last_name, :email)
-    end
+  def find_user
+    @user = User.find params[:id]
+  rescue ActiveRecord::RecordNotFound
+    head 404
+  end
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email)
+  end
 end

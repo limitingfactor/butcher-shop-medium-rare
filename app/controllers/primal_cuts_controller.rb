@@ -5,7 +5,7 @@ class PrimalCutsController < ApplicationController
   before_filter :find_primal_cut, :except => [:index, :create]
 
   def index
-    @primal_cuts = @animal.primal_cuts.all
+    @primal_cuts = @animal.primal_cuts
     respond_with @primal_cuts
   end
 
@@ -29,19 +29,20 @@ class PrimalCutsController < ApplicationController
   end
 
   protected
-    def find_animal
-      @animal = Animal.find params[:animal_id]
-    rescue ActiveRecord::RecordNotFound
-      head 404
-    end
 
-    def find_primal_cut
-      @primal_cut = PrimalCut.find params[:id]
-    rescue ActiveRecord::RecordNotFound
-      head 404
-    end
+  def find_animal
+    @animal = Animal.find params[:animal_id]
+  rescue ActiveRecord::RecordNotFound
+    head 404
+  end
 
-    def primal_cut_params
-      params.require(:primal_cut).permit(:name)
-    end
+  def find_primal_cut
+    @primal_cut = PrimalCut.find params[:id]
+  rescue ActiveRecord::RecordNotFound
+    head 404
+  end
+
+  def primal_cut_params
+    params.require(:primal_cut).permit(:name)
+  end
 end

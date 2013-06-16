@@ -1,20 +1,9 @@
 cow = Factory(:animal, name: "Cow")
-chuck = Factory(:primal_cut, name: "Chuck", animal_id: cow.id)
-short_loin = Factory(:primal_cut, name: "Short Loin", animal_id: cow.id)
-rib = Factory(:primal_cut, name: "Rib", animal_id: cow.id)
-prime_rib = Factory(:cut, name: "Prime Rib", primal_cut_id: rib.id)
-ribeye = Factory(:cut, name: "Ribeye", primal_cut_id: rib.id)
-porterhouse = Factory(:cut, name: "Porterhouse", animal_id: cow.id)
-tbone = Factory(:cut, name: "T-bone", animal_id: cow.id)
-strip = Factory(:cut, name: "Strip", animal_id: cow.id)
-
+["Chuck", "Short Loin", "Rib"].each { |primal_cut| Factory(:primal_cut, name: primal_cut, animal_id: cow.id) }
+["Prime Rib", "Ribeye"].each { |cut| Factory(:cut, name: cut, primal_cut_id: PrimalCut.where(name: "Rib").first.id) }
+["Porterhouse", "T-bone", "Strip"].each { |primal_cut| Factory(:cut, name: primal_cut, animal_id: cow.id) }
 
 pig = Factory(:animal, name: "Pig")
-jowl = Factory(:primal_cut, name: "Jowl", animal_id: pig.id)
-ham = Factory(:primal_cut, name: "Ham", animal_id: pig.id)
-loin = Factory(:primal_cut, name: "Loin", animal_id: pig.id)
-loin_chop = Factory(:cut, name: "Loin Chop", primal_cut_id: loin.id)
-blade_roast = Factory(:cut, name: "Blade Roast", primal_cut_id: loin.id)
-baby_back_ribs = Factory(:cut, name: "Baby Back Ribs", animal_id: pig.id)
-spare_ribs = Factory(:cut, name: "Spare Ribs", animal_id: pig.id)
-hock = Factory(:cut, name: "Hock", animal_id: pig.id)
+["Jowl", "Ham", "Loin"].each { |primal_cut| Factory(:primal_cut, name: primal_cut, animal_id: pig.id) }
+["Loin Chop", "Blade Roast"].each { |cut| Factory(:cut, name: cut, primal_cut_id: PrimalCut.where(name: "Loin").first.id) }
+["Baby Back Ribs", "Spare Ribs", "Hock"].each { |primal_cut| Factory(:cut, name: primal_cut, animal_id: pig.id) }

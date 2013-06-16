@@ -30,19 +30,19 @@ class FavoritesController < ApplicationController
 
   protected
 
-    def find_user
-      @user = User.find params[:user_id]
-    rescue ActiveRecord::RecordNotFound
-      head 404
-    end
+  def find_user
+    @user = User.find params[:user_id]
+  rescue ActiveRecord::RecordNotFound
+    head 404
+  end
 
-    def find_favorite
-      @favorite = Favorite.find params[:id]
-    rescue ActiveRecord::RecordNotFound
-      head 404
-    end
+  def find_favorite
+    @favorite = Favorite.find params[:id]
+  rescue ActiveRecord::RecordNotFound
+    head 404
+  end
 
-    def favorite_params
-      params.require(:favorite).permit(:cut_id)
-    end
+  def favorite_params
+    params.require(:favorite).permit(:cut_id)
+  end
 end
