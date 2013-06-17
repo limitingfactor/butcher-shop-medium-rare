@@ -24,6 +24,5 @@ capybara-*.html
 /spec/fixtures/
 **.orig
 rerun.txt
-/config/database.yml
 .DS_Store
 .env
