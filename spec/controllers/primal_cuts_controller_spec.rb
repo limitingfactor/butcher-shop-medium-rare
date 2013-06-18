@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe PrimalCutsController do
   let(:animal) { build(:animal, id: 50) }
-  let(:primal_cut) { create(:primal_cut, id: 60) }
+  let(:primal_cut) { build(:primal_cut, id: 60) }
   subject { response }
 
   describe "GET 'index'" do
@@ -10,7 +10,6 @@ describe PrimalCutsController do
       mock_primal_cut = mock("PrimalCut")
       Animal.should_receive(:find).with(animal.to_param).and_return(animal)
       animal.should_receive(:primal_cuts).and_return(mock_primal_cut)
-      mock_primal_cut.should_receive(:as_json)
       get :index, animal_id: animal.to_param, format: :json
     end
 

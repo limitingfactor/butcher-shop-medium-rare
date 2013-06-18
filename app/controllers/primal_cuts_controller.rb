@@ -6,12 +6,12 @@ class PrimalCutsController < ApplicationController
 
   def index
     @primal_cuts = @animal.primal_cuts
-    respond_with @primal_cuts
+    respond_with @animal, @primal_cut
   end
 
   def create
     @primal_cut = @animal.primal_cuts.create(primal_cut_params)
-    respond_with @primal_cut
+    respond_with @animal, @primal_cut
   end
 
   def show
